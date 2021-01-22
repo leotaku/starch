@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 set -e
+cd -- "$(dirname -- "$0")"
 MACHINE="starch"
 IMAGE_URL="https://gitlab.archlinux.org/archlinux/arch-boxes/-/jobs/13932/artifacts/raw/output/Arch-Linux-x86_64-cloudimg-20210120.13932.qcow2"
 
