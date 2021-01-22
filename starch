@@ -41,6 +41,7 @@ case $1 in
         machinectl copy-to "$MACHINE" files/setup.sh /root/setup.sh
         machinectl copy-to "$MACHINE" files/pacman.conf /etc/pacman.conf
         systemd-run --wait --machine "$MACHINE" bash /root/setup.sh
+        machinectl reboot "$MACHINE"
         ;;
     exec)
         shift
