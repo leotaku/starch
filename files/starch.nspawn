@@ -1,0 +1,14 @@
+[Exec]
+Boot=true
+
+[Files]
+BindReadOnly=/tmp/.X11-unix
+Bind=/run/user/1000/pulse:/run/user/host/pulse
+
+Bind=/dev/dri
+Bind=/dev/shm
+Bind=/dev/nvidia0
+Bind=/dev/nvidiactl
+Bind=/dev/nvidia-modeset
+
+TemporaryFileSystem=/run/host/etc

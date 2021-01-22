@@ -1,0 +1,51 @@
+#!/usr/bin/env sh
+set -e
+MACHINE="starch"
+IMAGE_URL="https://gitlab.archlinux.org/archlinux/arch-boxes/-/jobs/13932/artifacts/raw/output/Arch-Linux-x86_64-cloudimg-20210120.13932.qcow2"
+
+HELP_MESSAGE='starch version 1.0.0
+
+Usage:
+  starch [<command>] [args...]
+
+Commands:
+  pull     Pull the Arch Linux image used as the container base
+  boot     Boot the Starch container
+  setup    Perform initial setup of the Starch container
+  exec     Execute command within the Starch container
+'
+
+if [ "$UID" -ne "0" ]; then
+    echo "Error: Please run this script as root"
+    exit 1
+fi
+
+case $1 in
+    help)
+        echo "$HELP_MESSAGE"
+        ;;
+    pull)
+        machinectl pull-raw --verify=no "$IMAGE_URL" "$MACHINE"
+        ;;
+    boot)
+        mkdir -p /run/systemd/nspawn/
+        cp files/starch.nspawn /run/systemd/nspawn/"$MACHINE".nspawn
+        chown root:root /run/systemd/nspawn/"$MACHINE".nspawn
+        systemd-run \
+            --unit "$MACHINE"-nspawn --property=Type=notify --no-block \
+            systemd-nspawn --machine "$MACHINE" --settings trusted
+        ;;
+    setup)
+        systemd-run --wait --machine "$MACHINE" rm /root/setup.sh /etc/pacman.conf || true
+        machinectl copy-to "$MACHINE" files/setup.sh /root/setup.sh
+        machinectl copy-to "$MACHINE" files/pacman.conf /etc/pacman.conf
+        systemd-run --wait --machine "$MACHINE" bash /root/setup.sh
+        ;;
+    exec)
+        shift
+        systemd-run --machine "$MACHINE" --unit "$1" sudo -u starch $@
+        ;;
+    *)
+        echo "Error: Unknown command (not one of help, pull, boot, setup or exec)"
+        ;;
+esac
