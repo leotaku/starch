@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 set -e
 
+# Add a non-root user
 useradd -m starch || true
 
 # Install dependencies
@@ -18,6 +19,7 @@ pacman -S firefox thunar xdg-utils --noconfirm || true
 echo "export DISPLAY=:0" >> /etc/environment
 echo "export PULSE_SERVER=unix:/run/user/host/pulse/native" >> /etc/environment
 
+# Ensure settings are applied every reboot
 echo '
 if ! [ -e /run/host/etc/ld.so.cache ]; then
     ln -s /etc/ld.so.cache /run/host/etc/
