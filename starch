@@ -45,7 +45,7 @@ case $1 in
         ;;
     exec)
         shift
-        systemd-run --machine "$MACHINE" --unit "$1" sudo -u starch $@
+        systemd-run --machine "$MACHINE" --unit "$1" sudo -u starch "$@"
         ;;
     *)
         echo "Error: Unknown command (not one of help, pull, boot, setup or exec)"
