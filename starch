@@ -45,6 +45,7 @@ case $1 in
         systemd-run --wait --machine "$MACHINE" bash /root/setup.sh
         copyto files/setup.sh /root/setup.sh
         copyto files/pacman.conf /etc/pacman.conf
+        copyto files/sudoers /etc/sudoers
         machinectl reboot "$MACHINE"
         ;;
     exec)

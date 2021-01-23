@@ -2,7 +2,12 @@
 set -e
 
 # Add a non-root user
-useradd -m starch || true
+useradd -m starch -G wheel || true
+
+# Change passwords
+echo 'starch:starch' | chpasswd
+echo 'root:root' | chpasswd
+chown '0:0' /etc/sudoers
 
 # Install dependencies
 pacman -Sy steam xterm --noconfirm || true
