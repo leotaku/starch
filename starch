@@ -24,6 +24,11 @@ elif [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
+copyto() {
+    systemd-run --wait --quiet --machine "$MACHINE" rm "$2" || true
+    machinectl copy-to "$MACHINE" "$1" "$2"
+}
+
 case $1 in
     pull)
         machinectl pull-raw --verify=no "$IMAGE_URL" "$MACHINE"
@@ -37,10 +42,9 @@ case $1 in
             systemd-nspawn --machine "$MACHINE" --settings trusted
         ;;
     setup)
-        systemd-run --wait --machine "$MACHINE" rm /root/setup.sh /etc/pacman.conf || true
-        machinectl copy-to "$MACHINE" files/setup.sh /root/setup.sh
-        machinectl copy-to "$MACHINE" files/pacman.conf /etc/pacman.conf
         systemd-run --wait --machine "$MACHINE" bash /root/setup.sh
+        copyto files/setup.sh /root/setup.sh
+        copyto files/pacman.conf /etc/pacman.conf
         machinectl reboot "$MACHINE"
         ;;
     exec)
