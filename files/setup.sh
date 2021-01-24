@@ -25,5 +25,5 @@ echo "export DISPLAY=:0" >> /etc/environment
 echo "export PULSE_SERVER=unix:/run/user/host/pulse/native" >> /etc/environment
 
 # Enable persistent setup
-systemctl enable --now busaccess.service
-systemctl enable --now runhost.service
+systemctl enable --now --wait busaccess.service
+systemctl enable --now --wait runhost.service
