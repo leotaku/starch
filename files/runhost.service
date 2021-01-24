@@ -1,0 +1,12 @@
+[Install]
+WantedBy=default.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/env mount --bind /etc /run/host/etc
+Restart=never
+RestartSec=1
+
+[Unit]
+Description=Mount container files to /run/host
+PartOf=default.target

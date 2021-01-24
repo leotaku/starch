@@ -24,13 +24,6 @@ pacman -S firefox thunar xdg-utils --noconfirm || true
 echo "export DISPLAY=:0" >> /etc/environment
 echo "export PULSE_SERVER=unix:/run/user/host/pulse/native" >> /etc/environment
 
-# Ensure settings are applied every reboot
-echo '
-if ! [ -e /run/host/etc/ld.so.cache ]; then
-    ln -s /etc/ld.so.cache /run/host/etc/
-fi
-
-if [ -e /run/user/0/bus ]; then
-    chmod 777 /run/user/0/bus
-fi
-' >> /etc/profile
+# Enable persistent setup
+systemctl enable --now busaccess.service
+systemctl enable --now runhost.service

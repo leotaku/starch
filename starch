@@ -46,6 +46,8 @@ case $1 in
         copyto files/setup.sh /root/setup.sh
         copyto files/pacman.conf /etc/pacman.conf
         copyto files/sudoers /etc/sudoers
+        copyto files/busaccess.service /etc/systemd/system/busaccess.service
+        copyto files/runhost.service /etc/systemd/system/runhost.service
         machinectl reboot "$MACHINE"
         ;;
     exec)

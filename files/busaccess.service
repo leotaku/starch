@@ -1,0 +1,14 @@
+[Install]
+WantedBy=default.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/env chmod 777 /run/user/0/bus
+Restart=never
+RestartSec=1
+
+[Unit]
+After=user@0.service
+Wants=user@0.service
+Description=Allow root bus access
+PartOf=default.target
