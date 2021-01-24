@@ -10,7 +10,7 @@ echo 'root:root' | chpasswd
 chown '0:0' /etc/sudoers
 
 # Install dependencies
-pacman -Sy steam xterm --noconfirm || true
+pacman -Sy steam xterm --noconfirm
 
 # Install drivers
 pacman -S xf86-video-intel mesa lib32-mesa --noconfirm || true
