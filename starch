@@ -2,7 +2,8 @@
 set -e
 cd -- "$(dirname -- "$0")"
 MACHINE="starch"
-IMAGE_URL="https://gitlab.archlinux.org/archlinux/arch-boxes/-/jobs/13932/artifacts/raw/output/Arch-Linux-x86_64-cloudimg-20210120.13932.qcow2"
+ARCH_MIRROR="https://mirrors.evowise.com/archlinux"
+IMAGE_URL="$ARCH_MIRROR/images/latest/Arch-Linux-x86_64-basic-20210215.15590.qcow2"
 
 HELP_MESSAGE='starch version 1.0.0
 
