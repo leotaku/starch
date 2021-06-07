@@ -3,7 +3,7 @@ set -e
 cd -- "$(dirname -- "$0")"
 MACHINE="starch"
 ARCH_MIRROR="https://mirrors.evowise.com/archlinux"
-IMAGE_URL="$ARCH_MIRROR/images/latest/Arch-Linux-x86_64-basic-20210215.15590.qcow2"
+IMAGE_URL="$ARCH_MIRROR/images/v20210601.24453/Arch-Linux-x86_64-basic-20210601.24453.qcow2"
 
 HELP_MESSAGE='starch version 1.0.0
 
