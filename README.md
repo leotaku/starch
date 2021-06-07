@@ -28,7 +28,7 @@ Audio is also handled automatically, provided you have setup PulseAudio on your 
 Host systems running only ALSA are unfortunately not supported.
 
 Also remember that you still have access to the full arsenal of `machinectl` when managing your Starch container.
-For example, simply run `machinectl shell root@starch` to enter an interactive shell inside of the default Starch container.
+For example, you may run `machinectl shell root@starch` to enter an interactive shell inside of the default Starch container.
 For other useful container administration commands, refer to the `machinectl` manual.
 
 ## Customization
