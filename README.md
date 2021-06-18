@@ -22,7 +22,7 @@ Now it is possible to configure the running container using the `starch setup` c
 Now arbitrary commands can be executed on the Starch container using `starch exec COMMAND ARGS...`. Usually you will be running `starch exec steam` to start a new Steam client session.
 
 In order to access graphical applications running inside the Starch container you will have to allow connections to your host X server.
-This is most easily done by installing the Xhost application and running `xhost +local:` on your host system.
+This is most easily done by installing the XHost application and running `xhost +local:` on your host system.
 
 Audio is also handled automatically, provided you have setup PulseAudio on your host system.
 Host systems running only ALSA are unfortunately not supported.
