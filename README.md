@@ -3,10 +3,10 @@
 
 ## Background
 
-Over the last few yeras, Valve have done an outstanding job in bringing the massive Steam library to Linux.
+Over the last few years, Valve have done an outstanding job in bringing the massive Steam library to Linux.
 However, installing all the required libraries and ensuring they can be correctly linked into all Steam games can still be hard and error-prone, especially on unsupported Linux distributions.
 
-Starch aims to fix this problem by providing an easy way to run Steam inside of a lightwheight `systemd-nspawn` Arch Linux container.
+Starch aims to fix this problem by providing an easy way to run Steam inside of a lightweight `systemd-nspawn` Arch Linux container.
 This method is possible on all Linux systems using Systemd and should have **zero overhead** compared to running Steam on the host system.
 
 Because of the way `systemd-nspawn` and `machinectl` work, this approach requires running commands which require root access.
