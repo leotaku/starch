@@ -49,7 +49,7 @@ case $1 in
         copyto files/sudoers /etc/sudoers
         copyto files/busaccess.service /etc/systemd/system/busaccess.service
         copyto files/runhost.service /etc/systemd/system/runhost.service
-        systemd-run --wait --pipe --unit "setup" --machine "$MACHINE" bash /root/setup.sh
+        systemd-run --wait --pipe --collect --unit "setup" --machine "$MACHINE" bash /root/setup.sh
         machinectl reboot "$MACHINE"
         ;;
     exec)
