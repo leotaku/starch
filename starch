@@ -40,8 +40,8 @@ case $1 in
         cp files/starch.nspawn /run/systemd/nspawn/"$MACHINE".nspawn
         chown root:root /run/systemd/nspawn/"$MACHINE".nspawn
         systemd-run \
-            --no-block --unit systemd-nspawn-at-"$MACHINE" --property=Type=notify \
-            systemd-nspawn --machine "$MACHINE" --settings trusted
+            --unit systemd-nspawn-at-"$MACHINE" --property Type=notify \
+            systemd-nspawn --machine "$MACHINE" --settings trusted --notify-ready yes
         ;;
     setup)
         copyto files/setup.sh /root/setup.sh
