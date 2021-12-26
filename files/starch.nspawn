@@ -1,6 +1,9 @@
 [Exec]
 Boot=true
 
+[Network]
+VirtualEthernet=true
+
 [Files]
 BindReadOnly=/tmp/.X11-unix
 Bind=/run/user/1000/pulse:/run/user/host/pulse
