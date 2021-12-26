@@ -2,7 +2,8 @@
 set -e
 
 # Add a non-root user
-useradd -m starch -G wheel || true
+groupadd mount --gid 100 || true
+useradd -m starch -G wheel -G mount || true
 
 # Change passwords
 echo 'starch:starch' | chpasswd
@@ -16,6 +17,7 @@ pacman -Sy steam xterm --noconfirm
 pacman -S xf86-video-intel mesa lib32-mesa --noconfirm || true
 pacman -S xf86-video-amdgpu xf86-video-ati --noconfirm || true
 pacman -S nvidia nvidia-utils lib32-nvidia-utils --noconfirm || true
+pacman -S pulseaudio alsa-utils --noconfirm || true
 
 # Install helpful utilities
 pacman -S firefox thunar xdg-utils --noconfirm || true
