@@ -60,4 +60,4 @@ I am happy to help where I can.
 
 ## License
 
-[MIT](./LICENSE) © Leo Gaskin 2021
+[MIT](./LICENSE) © Leo Gaskin 2021-2022
