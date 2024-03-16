@@ -2,9 +2,9 @@
 set -e
 cd -- "$(dirname -- "$0")"
 MACHINE="starch"
-ARCH_VERSION="20211201.40458"
+ARCH_VERSION="latest"
 ARCH_MIRROR="https://mirror.pkgbuild.com"
-IMAGE_URL="$ARCH_MIRROR/images/v$ARCH_VERSION/Arch-Linux-x86_64-basic-$ARCH_VERSION.qcow2"
+IMAGE_URL="$ARCH_MIRROR/images/$ARCH_VERSION/Arch-Linux-x86_64-basic.qcow2"
 
 HELP_MESSAGE='starch version 1.0.0
 
