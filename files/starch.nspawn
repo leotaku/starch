@@ -3,7 +3,7 @@ Boot=true
 PrivateUsers=false
 
 [Network]
-VirtualEthernet=true
+VirtualEthernet=false
 
 [Files]
 BindReadOnly=/tmp/.X11-unix
